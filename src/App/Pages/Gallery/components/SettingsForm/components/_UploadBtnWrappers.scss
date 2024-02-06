@@ -1,0 +1,26 @@
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 20px;
+  .btn {
+    border: 2px solid orange;
+    color: orange;
+    background-color: black;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    width: 90%;
+    margin-left: 5%;
+    z-index: 1011;
+  }
+  input[type="file"] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+  }
+}

@@ -1,0 +1,64 @@
+@import "./buttonsGroup";
+@import "./headerForm";
+@import "./newFolderGroup";
+@import "../components/SelectFiles";
+@import "../components/UploadBtnWrappers";
+
+.gallerysettings-form {
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-width: 3px;
+  border-style: solid;
+  border-image: linear-gradient(to bottom, red, rgba(0, 0, 0, 0)) 1 100%;
+  padding: 20px;
+  .UploadGroup {
+    .file--preview {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      padding: 10px;
+      width: 90%;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        margin: 2px;
+      }
+    }
+    h3 {
+      width: 100%;
+      text-align: center;
+      margin: 10px 0;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .gallerysettings-form {
+    width: 90vw;
+    padding: 10px;
+    margin: 0;
+    .UploadGroup {
+      width: 100%;
+      .file--preview {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (min-width: 700px) {
+  .gallerysettings-form {
+    width: 100%;
+    .UploadGroup {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+}

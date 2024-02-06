@@ -1,0 +1,118 @@
+.opinionssettings-content {
+  display: block;
+  color: white;
+  width: 100%;
+  max-height: 100vh;
+  overflow-y: scroll;
+  .queued_list {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 10px;
+    h1 {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    .queued_list--item {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 10px;
+      width: clamp(150px, 400px, 40%);
+      border: 2px solid white;
+      padding: 10px;
+      height: auto;
+      margin: 5px;
+      h3,
+      span {
+        font-size: 1rem;
+        margin: 2px 0 2px 5px;
+        text-transform: uppercase;
+      }
+      span {
+        font-size: 0.9rem;
+      }
+
+      &:last-child {
+        border-right: 2px solid white;
+      }
+
+      .Answer {
+        width: 100%;
+        margin: 10px 0;
+        padding: 5px;
+        text-align: center;
+        .Answer--form {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 10px;
+          textarea {
+            width: 45%;
+            transition: width 0.4s ease-in-out;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            resize: none;
+            padding: 5px;
+            &:focus {
+              width: 90%;
+              height: 100px;
+            }
+          }
+          p {
+            width: 100%;
+            text-align: center;
+          }
+          div {
+            width: 100%;
+            margin: 5px 0;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+            button {
+              width: clamp(130px, 40%, 200px);
+              height: 30px;
+              margin: 5px 5%;
+            }
+          }
+        }
+      }
+
+      .yes_no_group {
+        display: flex;
+        flex-direction: row;
+        padding: 20px;
+        width: 100%;
+        justify-content: space-evenly;
+        img {
+          width: 40px;
+          height: 30px;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+        .yes_icon:hover {
+          filter: invert(27%) sepia(77%) saturate(6828%) hue-rotate(121deg)
+            brightness(93%) contrast(103%);
+        }
+        .no_icon:hover {
+          filter: invert(20%) sepia(48%) saturate(7440%) hue-rotate(353deg)
+            brightness(117%) contrast(135%);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .queued_list--item {
+    div {
+      width: 100% !important;
+    }
+  }
+}

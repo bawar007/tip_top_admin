@@ -1,0 +1,205 @@
+@media (min-width: 700px) {
+  .NavigationAdminPanel {
+    position: sticky;
+    top: 20px;
+    left: 0;
+    width: clamp(10vw, 20vw, 200px);
+    height: 80vh;
+    background-color: rgb(15, 15, 15);
+    margin-right: 10px;
+    border-style: solid;
+    border-bottom: 3px solid transparent;
+    border-image: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0),
+        orange,
+        rgba(0, 0, 0, 0)
+      )
+      1;
+
+    input {
+      display: none;
+    }
+
+    .navigation-menu {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+
+      .menu-item {
+        .item-link {
+          display: flex;
+          flex-direction: column;
+          text-decoration: none;
+          align-items: center;
+          justify-content: center;
+          margin: 10px 0;
+          padding: 5px;
+          border-bottom: 3px solid transparent;
+          border-image: linear-gradient(90deg, black, orange, black);
+          border-image-slice: 1;
+          &:hover {
+            p {
+              color: orange;
+            }
+            img:last-child {
+              filter: invert(99%) sepia(1%) saturate(2%) hue-rotate(227deg)
+                brightness(110%) contrast(98%);
+              fill: white;
+            }
+          }
+        }
+
+        p {
+          color: white;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          font-size: clamp(0.6rem, 1vw, 1rem);
+          text-align: center;
+          margin: 5px 0;
+        }
+        img {
+          margin: 5px 0;
+          filter: invert(14%) sepia(90%) saturate(6114%) hue-rotate(358deg)
+            brightness(107%) contrast(113%);
+          width: 40px;
+          height: 40px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .NavigationAdminPanel {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    border-radius: 50%;
+    input {
+      visibility: hidden;
+    }
+    .menuToggleAdmin {
+      display: block;
+      position: fixed;
+      bottom: 25px;
+      left: 25px;
+      width: 50px;
+      height: 50px;
+      z-index: 101000;
+      border-radius: 50%;
+
+      .navicon {
+        background: #333;
+        display: block;
+        height: 4px;
+        position: relative;
+        top: 21px;
+        left: 10px;
+        width: 30px;
+        &::before,
+        &::after {
+          background: #333;
+          content: "";
+          display: block;
+          height: 100%;
+          position: absolute;
+          transition: all 0.2s ease-out;
+          width: 100%;
+        }
+        &::before {
+          top: 10px;
+        }
+        &::after {
+          top: -10px;
+        }
+      }
+    }
+    .navigation-menu {
+      display: none;
+      transform: scale(0);
+    }
+
+    input:checked ~ .navigation-menu {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: black;
+      transform: scale(1);
+      .menu-item {
+        list-style: none;
+        display: flex;
+        color: black;
+        align-items: center;
+        justify-content: center;
+        width: 90%;
+        border-bottom: 3px solid transparent;
+        border-image: linear-gradient(90deg, black, orange, black);
+        border-image-slice: 1;
+
+        .item-link {
+          display: flex;
+          flex-direction: column;
+          text-decoration: none;
+          align-items: center;
+          justify-content: center;
+          margin: 10px 0;
+          padding: 5px;
+          color: white;
+          &:hover {
+            p {
+              color: orange;
+            }
+            img:last-child {
+              filter: invert(99%) sepia(1%) saturate(2%) hue-rotate(227deg)
+                brightness(110%) contrast(98%);
+              fill: white;
+            }
+          }
+        }
+
+        p {
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          font-size: clamp(0.6rem, 5vw, 1.3rem);
+          text-align: center;
+          margin: 5px 0;
+        }
+        img {
+          margin: 5px 0;
+          filter: invert(14%) sepia(90%) saturate(6114%) hue-rotate(358deg)
+            brightness(107%) contrast(113%);
+          width: 40px;
+          height: 40px;
+        }
+      }
+    }
+    input:checked ~ .menuToggleAdmin {
+      .navicon {
+        background: transparent !important;
+        &::before {
+          transform: rotate(-45deg);
+          top: 0;
+          background-color: white;
+        }
+        &::after {
+          transform: rotate(45deg);
+          top: 0;
+          background-color: white;
+        }
+      }
+    }
+  }
+}

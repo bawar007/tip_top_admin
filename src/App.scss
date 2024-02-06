@@ -1,0 +1,28 @@
+@import "./App/components/navigation/NavigationAdminPanel.scss";
+@import "./App/Pages/Login/style/LoginPage.scss";
+@import "./App/Pages/Gallery/Gallery.scss";
+@import "./App/Pages/Opinions/Opinions.scss";
+
+$background-color_settings: rgb(15, 15, 15);
+
+.AdminPanelContent {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: $background-color_settings;
+  padding: 50px 0;
+  overflow-y: scroll;
+  .AdminPanelContent--setings {
+    width: 80vw;
+    height: 80%;
+  }
+}
+
+@media (max-width: 700px) {
+  .AdminPanelContent--setings {
+    width: 95vw !important;
+  }
+}

@@ -1,0 +1,166 @@
+.gallerysettings-counter {
+  .previev {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150px;
+    height: 150px;
+    img {
+      border-radius: 20px;
+    }
+  }
+  .counter-settings {
+    width: 100%;
+    margin: 10px;
+    padding: 20px;
+    border: 2px solid orange;
+    border-image: linear-gradient(200deg, black, orange, black);
+    border-image-slice: 1;
+    .settings-folders {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      h3 {
+        margin-right: 10px;
+      }
+      img {
+        width: 50px;
+        height: 50px;
+        overflow: hidden;
+      }
+      .select-form-files {
+        color: black;
+        width: 90%;
+        .form-files__option {
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+
+  .test_counter-content {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-height: 90%;
+    overflow-y: auto;
+    .gallerysettings-counter-images {
+      width: 100%;
+      padding: 30px 10px;
+      margin: 10px;
+      border-image: linear-gradient(200deg, black, orange, black);
+      border-image-slice: 1;
+      h2 {
+        width: 100%;
+        text-align: left;
+        margin: 0 0 10px 0;
+        padding: 10px;
+        border-bottom: 2px solid transparent;
+        border-image: linear-gradient(90deg, black, orange, black);
+        border-image-slice: 1;
+      }
+      .butttonsImageGroup {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 10px 0;
+        justify-content: space-between;
+        .ImageGroup--btn {
+          width: calc(30% - 10px);
+          height: 50px;
+          border: 2px solid orange;
+          color: orange;
+          background-color: black;
+          border-radius: 8px;
+          font-size: 1.1rem;
+          font-weight: bold;
+          margin: 5px;
+          &:hover {
+            cursor: pointer;
+          }
+          &:first-child:hover {
+            border-color: green;
+            color: green;
+          }
+          &:nth-child(2):hover {
+            border-color: red;
+            color: red;
+          }
+        }
+      }
+
+      .image_checkbox__group {
+        display: inline-block;
+        position: relative;
+        .counter__image {
+          width: 75px;
+          height: 75px;
+          margin: 2px;
+          box-sizing: border-box;
+          padding: 1px;
+          border-radius: 25px;
+          transition: transform 0.2s ease;
+        }
+        input {
+          opacity: 0;
+          position: absolute;
+          right: 0;
+          top: 5px;
+          border: 1px solid blue;
+        }
+        input:checked {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 700px) {
+  .counter__image {
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.05);
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .test_counter-content {
+    height: 40vh;
+    overflow-y: scroll;
+    box-shadow: 0px 0px 6px 0px rgba(255, 165, 0, 1);
+  }
+  .previev {
+    visibility: hidden;
+  }
+  .gallerysettings-counter-images {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    padding: 10px !important;
+  }
+  .counter-settings {
+    padding: 10px;
+    margin: 10px 0 !important;
+    .settings-folders {
+      flex-wrap: wrap;
+      justify-content: center !important;
+      h3 {
+        font-size: 1.6rem;
+      }
+      .select-form-files {
+        width: 100% !important;
+        margin: 10px 0;
+      }
+    }
+  }
+}

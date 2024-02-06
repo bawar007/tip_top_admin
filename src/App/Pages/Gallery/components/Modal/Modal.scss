@@ -1,0 +1,82 @@
+.modalCheckedFiles {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .modalcontent {
+    width: 50%;
+    background-color: black;
+    min-height: 100px;
+    position: relative;
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+    .closeBtn {
+      font-size: 2rem;
+      position: absolute;
+      top: 0;
+      right: 10px;
+      &:hover {
+        cursor: pointer;
+        color: red;
+      }
+    }
+
+    .filesToDeleteList {
+      display: flex;
+      width: 100%;
+      min-height: 100px;
+      flex-direction: column;
+      ul {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-start;
+        li {
+          margin: 5px;
+          border: 2px solid red;
+          padding: 10px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 25px;
+        }
+      }
+    }
+    .btngroup {
+      display: flex;
+      flex-direction: row;
+      width: 90%;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      .acceptBtn,
+      .deleteBtn {
+        height: 40px;
+        padding: 10px;
+        width: 100px;
+        font-size: 1.2rem;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+      .acceptBtn {
+        &:hover {
+          color: green;
+        }
+      }
+      .deleteBtn {
+        &:hover {
+          color: red;
+        }
+      }
+    }
+  }
+}

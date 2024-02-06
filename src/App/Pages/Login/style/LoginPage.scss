@@ -1,0 +1,117 @@
+@import "../components/btn/Button.scss";
+
+.LoginPage {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #0e060c;
+  color: white;
+  .login {
+    padding: 2rem;
+    border: 5px solid rgb(235, 154, 2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    width: auto;
+    h1 {
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+    }
+    .LoginPage--form {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+      label {
+        width: 100%;
+        padding: 10px;
+        margin: 5px auto;
+        font-size: 1.2rem;
+        display: inline-block;
+        position: relative;
+        span {
+          position: absolute;
+          color: black;
+          left: 30px;
+          top: 15px;
+          font-size: 1.1rem;
+          transition: 1s;
+        }
+      }
+      .admin-login {
+        &:focus + .login-span {
+          left: 10px;
+          top: -15px;
+          color: white;
+        }
+      }
+      .admin-pass {
+        &:focus + .pass-span {
+          left: 10px;
+          top: -15px;
+          color: white;
+        }
+      }
+      .adminInput {
+        margin-left: 5px;
+        width: auto;
+        border-radius: 20px;
+        height: 2rem;
+        padding: 5px 10px;
+        font-size: 1.1rem;
+        border: 3.5px solid transparent;
+
+        &:valid {
+          span {
+            position: absolute;
+            left: 30px;
+            top: -12px;
+            font-size: 1rem;
+          }
+        }
+      }
+      .adminInputWrong {
+        border-color: red;
+      }
+      .wrong {
+        color: red;
+        width: 100%;
+        text-align: center;
+        text-transform: uppercase;
+        margin-top: 10px;
+        padding: 5px 10px;
+        animation: wrongpass 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+      }
+    }
+  }
+}
+
+@keyframes wrongpass {
+  10%,
+  90% {
+    transform: translate(-1px, -1px);
+  }
+
+  20%,
+  80% {
+    transform: translate(2px, 2px);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate(-4px, -4px);
+  }
+
+  40%,
+  60% {
+    transform: translate(4px, 4px);
+  }
+}
