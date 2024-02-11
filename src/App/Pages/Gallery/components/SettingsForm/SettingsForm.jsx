@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import {
   postFilesToServer,
   postMiniatureToServer,
-} from "./helpers/requestFunctions";
+} from "../../../../helpers/requestFunctions";
 import UploadBtnWrapper from "./components/UploadBtnWrapper";
 import SelectFiles from "./components/SelectFiles";
 import { AppProviderContext } from "../../../../Provider/AppProvider";
@@ -53,22 +53,13 @@ const SettingsForm = () => {
       alert("Nie wybrałeś plików");
     }
 
-    window.location.reload();
+    setTimeout(() => window.location.reload(), 1000);
   };
 
   return (
     <form onSubmit={handleUploadNewFiles} className="gallerysettings-form">
       <div className="headerForm">
-        <h1>Wyślij pliki na serwer</h1>
-        <img
-          src="/icons/settings_close.svg"
-          alt="sett2"
-          width="50"
-          height="50"
-          onClick={() =>
-            setSettingsFiles((prev) => ({ ...prev, settingsMenuIsOpen: false }))
-          }
-        />
+        <h1>Panel Admina</h1>
       </div>
 
       <div className="newFolderGroup">

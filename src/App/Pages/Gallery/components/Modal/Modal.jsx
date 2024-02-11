@@ -5,8 +5,13 @@ import { AppProviderContext } from "../../../../Provider/AppProvider";
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 const Modal = () => {
-  const { settingsFiles, setSettingsFiles, HOST } =
-    useContext(AppProviderContext);
+  const {
+    settingsFiles,
+    setSettingsFiles,
+    HOST,
+    setSelectedFilesFromApi,
+    selectedFilesFromApi,
+  } = useContext(AppProviderContext);
 
   const handleDeleteFilesTest = async () => {
     try {
@@ -27,15 +32,31 @@ const Modal = () => {
   const handleDeleteFiles = async () => {
     if (settingsFiles.modalIsOpen) {
       handleDeleteFilesTest();
+      const updateFilesStructure =
+        selectedFilesFromApi.fetchFilesStructure.reduce((acc, obj1) => {
+          let matchingObj2 = settingsFiles.filesToDelete.find(
+            (obj2) => obj2.folderName === obj1.name
+          );
+          if (matchingObj2) {
+            obj1.table = obj1.table.filter(
+              (element) => !matchingObj2.filesFromFolder.includes(element)
+            );
+          }
+          acc.push(obj1);
+          return acc;
+        }, []);
 
       setSettingsFiles((prev) => ({
         ...prev,
         filesToDelete: [],
         modalIsOpen: false,
       }));
+      setSelectedFilesFromApi((prev) => ({
+        ...prev,
+        fetchFilesStructure: updateFilesStructure,
+      }));
 
       alert("Pliki zostały usunięte");
-      window.location.reload();
     }
   };
 

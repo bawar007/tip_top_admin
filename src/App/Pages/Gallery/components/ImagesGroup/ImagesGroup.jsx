@@ -4,35 +4,31 @@ import Select from "react-select";
 import makeAnimated from "react-select/animated";
 
 import { AppProviderContext } from "../../../../Provider/AppProvider";
-import useImages from "../../hooks/useImages";
 import LogoItem from "../../../../components/LogoItem";
 
 const ImagesGroup = () => {
   const animatedComponents = makeAnimated();
 
-  const { HOST } = useContext(AppProviderContext);
-
-  const { loading, selectedFilesFromApi, error, setSelectedFilesFromApi } =
-    useImages(HOST);
+  const { loading, selectedFilesFromApi, setSelectedFilesFromApi } =
+    useContext(AppProviderContext);
 
   const [allSelectItems, setAllSelectItems] = useState(false);
 
-  if (loading || error) return <LogoItem />;
+  if (loading) return <LogoItem />;
 
   const handleFilesInView = (itemsToView) => {
-    const test = itemsToView.findIndex((item) => item.value === "all");
+    const { fetchFilesStructure } = selectedFilesFromApi;
+    const ALL_FILES = itemsToView.findIndex((item) => item.value === "all");
 
     const filesInView = itemsToView.map((file) => file.value);
 
     const TableSelectedFolders = [];
-    if (test !== -1) {
-      selectedFilesFromApi.fetchFilesStructure.forEach((item) =>
-        TableSelectedFolders.push(item)
-      );
+    if (ALL_FILES !== -1) {
+      fetchFilesStructure.forEach((item) => TableSelectedFolders.push(item));
       setAllSelectItems(true);
     } else {
       filesInView.forEach((file) => {
-        selectedFilesFromApi.fetchFilesStructure.filter(
+        fetchFilesStructure.filter(
           (e) => e.name === file && TableSelectedFolders.push(e)
         );
       });
@@ -44,6 +40,9 @@ const ImagesGroup = () => {
       filesInView: TableSelectedFolders,
     }));
   };
+
+  const { optionsFromFiles = { value: "", label: "" }, filesInView } =
+    selectedFilesFromApi;
 
   return (
     <div className="gallerysettings-counter">
@@ -57,19 +56,19 @@ const ImagesGroup = () => {
             value={
               allSelectItems
                 ? { value: "all", label: "all" }
-                : selectedFilesFromApi.optionsFromFiles.value
+                : optionsFromFiles.value
             }
-            options={selectedFilesFromApi.optionsFromFiles}
+            options={optionsFromFiles}
             className="select-form-files"
             classNamePrefix="form-files"
             onChange={(value) => handleFilesInView(value)}
             placeholder={"Wybierz foldery"}
-            defaultValue={selectedFilesFromApi.optionsFromFiles[1]}
+            defaultValue={optionsFromFiles[1]}
           />
         </div>
       </div>
 
-      <ImagesGroupContent imageMap={selectedFilesFromApi.filesInView} />
+      <ImagesGroupContent imageMap={filesInView} />
     </div>
   );
 };

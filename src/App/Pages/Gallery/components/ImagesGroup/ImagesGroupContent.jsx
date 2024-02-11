@@ -2,7 +2,7 @@ import { useContext, useRef } from "react";
 
 import { AppProviderContext } from "../../../../Provider/AppProvider";
 
-const ImagesGroupContent = ({ imageMap }) => {
+const ImagesGroupContent = ({ imageMap = [] }) => {
   const { settingsFiles, setSettingsFiles, HOST } =
     useContext(AppProviderContext);
 
@@ -94,16 +94,20 @@ const ImagesGroupContent = ({ imageMap }) => {
     const newArr = [];
 
     images.forEach((el) => {
-      if (!el.checked) {
-        el.checked = true;
-        newArr.push(el.id);
-      }
+      el.checked = true;
+      newArr.push(el.id);
     });
+
+    const clearFiles = settingsFiles.filesToDelete.filter(
+      (item) => item.folderName !== name
+    );
+
+    console.log(clearFiles);
 
     setSettingsFiles((prev) => ({
       ...prev,
       filesToDelete: [
-        ...prev.filesToDelete,
+        ...clearFiles,
         {
           folderName: name,
           filesFromFolder: newArr,

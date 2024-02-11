@@ -10,8 +10,8 @@ export const postFilesToServer = async (
   let formData = new FormData();
   for (let i = 0; i < filesToUplaod.length; i++) {
     formData.append("files", filesToUplaod[i]);
+    console.log(formData);
   }
-
   await axios
     .post(`${HOST}/upload?s=${folderToUpload}`, formData, {
       headers: {
